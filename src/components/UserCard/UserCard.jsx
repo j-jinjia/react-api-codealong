@@ -1,19 +1,13 @@
 import "./UserCard.scss";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ userName, userImage, userEmail, userPhoneNumber }) => {
   return (
     <div className="card">
-      <img
-        className="card__image"
-        src={user.picture.large}
-        alt={user.name.first}
-      />
+      <img className="card__image" src={userImage} alt={userName} />
       <div className="card__content">
-        <h2 className="card__heading">
-          {user.name.first} {user.name.last}
-        </h2>
-        <a href={"mailto:" + user.email}>{user.email}</a>
-        <a href={"tel:" + user.phone}>{user.phone}</a>
+        <h2 className="card__heading">{userName}</h2>
+        <a href={"mailto:" + userEmail}>{userEmail}</a>
+        <a href={"tel:" + userPhoneNumber}>{userPhoneNumber}</a>
       </div>
     </div>
   );

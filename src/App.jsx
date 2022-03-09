@@ -3,8 +3,6 @@ import "./App.scss";
 import Button from "./components/Button/Button";
 import UserCard from "./components/UserCard/UserCard";
 
-//https://randomuser.me/api/?results=5000
-
 const App = () => {
   const [user, setUser] = useState();
 
@@ -22,7 +20,14 @@ const App = () => {
     <div className="app">
       <h1>Random User Generator</h1>
       <Button onClick={getUsers} label="Get Random User" />
-      {user && <UserCard user={user} />}
+      {user && (
+        <UserCard
+          userName={`${user.name.first} ${user.name.last}`}
+          userImage={user.picture.large}
+          userEmail={user.email}
+          userPhoneNumber={user.phone}
+        />
+      )}
     </div>
   );
 };
