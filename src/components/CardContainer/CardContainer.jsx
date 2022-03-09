@@ -1,4 +1,4 @@
-import UserCard from "../UserCard/UserCard";
+import ProfileCard from "../ProfileCard/ProfileCard";
 import "./CardContainer.scss";
 
 const CardContainer = ({ cards }) => {
@@ -6,12 +6,12 @@ const CardContainer = ({ cards }) => {
     <div className="card-container">
       {cards.map((user) => {
         return (
-          <UserCard
+          <ProfileCard
             key={user.registered.date}
-            userName={`${user.name.first} ${user.name.last}`}
-            userImage={user.picture.large}
-            userEmail={user.email}
-            userPhoneNumber={user.phone}
+            name={`${user.name.first} ${user.name.last}`}
+            image={user.picture.large}
+            email={user.email}
+            phoneNumber={user.phone}
           />
         );
       })}
