@@ -1,10 +1,31 @@
-import { Routes, Route } from "react-router-dom";
+import { useState } from "react";
+import "./App.scss";
+import Button from "./components/Button/Button";
 
 const App = () => {
+  const [quote, setQuote] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const url = "https://api.kanye.rest";
+
+  const getKanyeQuote = () => {
+    setLoading(true);
+    fetch(url)
+      .then((res) => res.json())
+      .then((data) => {
+        setTimeout(() => {
+          setQuote(data.quote);
+          setLoading(false);
+        }, 1000);
+      });
+  };
+
   return (
-    <Routes>
-      <Route path="*" element={<h1>Home</h1>} />
-    </Routes>
+    <div className="app">
+      <h1>Kanye Quote Generator</h1>
+      <Button onClick={getKanyeQuote} label="Get Some Ye" />
+      <p className="app__text">{loading ? "Getting quote..." : quote}</p>
+    </div>
   );
 };
 

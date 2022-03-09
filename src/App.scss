@@ -1,0 +1,18 @@
+@use "./styles/reset";
+@use "./styles/typography";
+@use "./styles/variables" as *;
+
+.app {
+  height: 100vh;
+  background-color: $background-color;
+  padding: 2rem;
+
+  > * {
+    margin-bottom: 1.5rem;
+  }
+
+  .app__text {
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+}
