@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.scss";
 import CardContainer from "./components/CardContainer/CardContainer";
+import RangeInput from "./components/RangeInput/RangeInput";
 
 const App = () => {
   const [users, setUsers] = useState([]);
@@ -25,12 +26,11 @@ const App = () => {
   return (
     <div className="app">
       <h1>Random User Generator</h1>
-      <label htmlFor="user-range">Number of users: {numberOfUsers}</label>
-      <input
+      <RangeInput
         id="user-range"
-        type="range"
-        min="1"
-        max="10"
+        label={`Number of users: ${numberOfUsers}`}
+        min={1}
+        max={10}
         value={numberOfUsers}
         onChange={handleInputChange}
       />
