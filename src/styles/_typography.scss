@@ -5,7 +5,8 @@
 // we can manipulate the :root element's font-size at different breakpoints to scale up the font-size application-wide
 
 * {
-  font-family: Helvetica, sans-serif;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
   color: $text-color;
 }
 
@@ -22,8 +23,7 @@ p {
   width: 100%;
 }
 
-button,
-p {
+button {
   font-size: 1.2rem;
 }
 
