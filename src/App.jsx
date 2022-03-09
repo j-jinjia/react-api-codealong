@@ -1,33 +1,40 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.scss";
-import Button from "./components/Button/Button";
-import UserCard from "./components/UserCard/UserCard";
+import CardContainer from "./components/CardContainer/CardContainer";
 
 const App = () => {
-  const [user, setUser] = useState();
+  const [users, setUsers] = useState([]);
+  const [numberOfUsers, setNumberOfUsers] = useState(5);
 
-  const url = "https://randomuser.me/api/";
+  const url = "https://randomuser.me/api";
 
-  const getUsers = () => {
-    fetch(url)
-      .then((res) => res.json())
-      .then((data) => {
-        setUser(data.results[0]);
-      });
+  const getUsers = async (resultNumber) => {
+    const res = await fetch(url + `?results=${resultNumber}`);
+    const data = await res.json();
+    setUsers(data.results);
+  };
+
+  useEffect(() => {
+    getUsers(numberOfUsers);
+  }, [numberOfUsers]);
+
+  const handleInputChange = (event) => {
+    setNumberOfUsers(event.target.value);
   };
 
   return (
     <div className="app">
       <h1>Random User Generator</h1>
-      <Button onClick={getUsers} label="Get Random User" />
-      {user && (
-        <UserCard
-          userName={`${user.name.first} ${user.name.last}`}
-          userImage={user.picture.large}
-          userEmail={user.email}
-          userPhoneNumber={user.phone}
-        />
-      )}
+      <label htmlFor="user-range">Number of users: {numberOfUsers}</label>
+      <input
+        id="user-range"
+        type="range"
+        min="1"
+        max="10"
+        value={numberOfUsers}
+        onChange={handleInputChange}
+      />
+      <CardContainer cards={users} />
     </div>
   );
 };

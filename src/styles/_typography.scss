@@ -38,17 +38,3 @@ h2 {
 h3 {
   font-size: 1.25rem;
 }
-
-@media screen and (min-width: $tablet-breakpoint) {
-  // increases font-size of all items by 10%
-  :root {
-    font-size: 110%;
-  }
-}
-
-@media screen and (min-width: $desktop-breakpoint) {
-  // increases font-size of all items by 20%
-  :root {
-    font-size: 120%;
-  }
-}

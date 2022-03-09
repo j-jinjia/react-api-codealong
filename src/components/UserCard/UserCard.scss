@@ -3,14 +3,12 @@
 .card {
   display: flex;
   flex-direction: column;
+  align-items: center;
   background-color: $color-foreground;
+  width: 100%;
   max-width: 350px;
   border-radius: 3px;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
   padding: 1rem;
 
   .card__image {
@@ -25,6 +23,7 @@
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
+    word-break: break-word;
 
     .card__heading {
       font-size: 1.5rem;
